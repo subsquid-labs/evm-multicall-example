@@ -7,7 +7,8 @@
     "update": "npx npm-check-updates --filter /subsquid/ --upgrade && npm i -f"
   },
   "dependencies": {
-    "@subsquid/evm-processor": "^0.2.2",
+    "@subsquid/archive-registry": "^2.1.2",
+    "@subsquid/evm-processor": "^0.2.4",
     "@subsquid/evm-typegen": "^2.0.2",
     "@subsquid/graphql-server": "^3.3.0",
     "@subsquid/typeorm-migration": "^0.1.4",

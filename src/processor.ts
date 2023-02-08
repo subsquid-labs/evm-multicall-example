@@ -1,6 +1,7 @@
 import {BatchHandlerContext, BatchProcessorItem, EvmBatchProcessor, EvmBlock} from '@subsquid/evm-processor'
 import {LogItem} from '@subsquid/evm-processor/lib/interfaces/dataSelection'
 import {Store, TypeormDatabase} from '@subsquid/typeorm-store'
+import { lookupArchive } from '@subsquid/arhive-registry'
 import {In} from 'typeorm'
 import {Owner, Token, Transfer} from './model'
 import {BigNumber} from 'ethers'
@@ -15,7 +16,7 @@ export const MULTICALL_ADDRESS = '0x5ba1e12693dc8f9c48aad8770482f4739beed696'
 let database = new TypeormDatabase()
 let processor = new EvmBatchProcessor()
     .setDataSource({
-        archive: 'https://eth.archive.subsquid.io',
+        archive: lookupArchive('eth-mainnet'),
         chain: 'https://rpc.ankr.com/eth',
     })
     .setBlockRange({
