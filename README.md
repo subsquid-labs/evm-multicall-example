@@ -1,3 +1,6 @@
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/subsquid-labs/multicall-example)
+
+
 # Exosama NFT collection
 
 This sample squid indexes [Exosama NFT](https://etherscan.io/address/0xac5c7493036de60e63eb81c5e9a440b42f47ebf5) transfers on the Ethereum Mainnet by subscribing to the `Transfer` logs. For each new batch, the processor detects the NFTs that have not yet been indexed and populates the metadata calling the contract state (see `initTokens()`). The contract state queries are batched using the [Multicall 
