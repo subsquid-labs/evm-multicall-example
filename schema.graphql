@@ -1,12 +1,12 @@
 type Token @entity {
     id: ID!
     index: BigInt!
-    owner: Owner!
+    owner: Account!
     uri: String!
     transfers: [Transfer!]! @derivedFrom(field: "token")
 }
 
-type Owner @entity {
+type Account @entity {
     id: ID!
     ownedTokens: [Token!]! @derivedFrom(field: "owner")
 }
@@ -14,8 +14,8 @@ type Owner @entity {
 type Transfer @entity {
     id: ID!
     token: Token!
-    from: Owner!
-    to: Owner!
+    from: Account!
+    to: Account!
     timestamp: DateTime!
     blockNumber: Int!
     txHash: String!
