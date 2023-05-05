@@ -108,16 +108,16 @@ async function processTransfers(ctx: Context, transfersData: TransferEvent[]) {
 
     await initTokens(ctx, newTokens)
 
-    await ctx.store.save([...owners.values()])
-    await ctx.store.save([...tokens.values()])
-    await ctx.store.save(transfers)
+    await ctx.store.upsert([...owners.values()])
+    await ctx.store.upsert([...tokens.values()])
+    await ctx.store.upsert(transfers)
 }
 
 async function initTokens(ctx: Context, tokens: Token[]) {
     let multicall = new Multicall(ctx, ctx.blocks[ctx.blocks.length - 1].header, MULTICALL_ADDRESS)
 
     let args = tokens.map((t) => [t.index])
-    let uris = await multicall.aggregate(erc721.functions.tokenURI, CONTRACT_ADDRESS, args)
+    let uris = await multicall.aggregate(erc721.functions.tokenURI, CONTRACT_ADDRESS, args, 500)
 
     for (let i = 0; i < tokens.length; i++) {
         tokens[i].uri = uris[i]
