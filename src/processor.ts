@@ -15,7 +15,7 @@ export const MULTICALL_ADDRESS = '0x5ba1e12693dc8f9c48aad8770482f4739beed696'
 
 export const processor = new EvmBatchProcessor()
     .setDataSource({
-        archive: 'https://v2.archive.subsquid.io/network/ethereum-mainnet',
+        archive: lookupArchive('eth-mainnet'),
         chain: 'https://rpc.ankr.com/eth',
     })
     .setFinalityConfirmation(10)
